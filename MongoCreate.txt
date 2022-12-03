@@ -1,0 +1,68 @@
+Microsoft Windows [Version 10.0.19045.2251]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User>mongo
+MongoDB shell version v5.0.14
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("655948ed-9f7f-46cd-b241-c1821f16800e") }
+MongoDB server version: 5.0.14
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2022-12-03T22:33:48.696+01:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> db.version
+function() {
+    return this.serverBuildInfo().version;
+}
+> db.version()
+5.0.14
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use training
+switched to db training
+> db.createCollection("mycollection")
+{ "ok" : 1 }
+> show collections
+mycollection
+> db.mycollection.insert({"color":"white", "example":"milk"})
+WriteResult({ "nInserted" : 1 })
+> db.mycollection.insert({"color": "blue", "example": "sky"})
+WriteResult({ "nInserted" : 1 })
+> db.mycollection.insert({"color": "green", "example": "butter"}, {"color" : "purple", "example" : "triad"}, {"color" : "red", "example" : "turtle"})
+WriteResult({ "nInserted" : 1 })
+> db.mycollection.count()
+3
+> db.mycollection.find()
+{ "_id" : ObjectId("638bcb61b4019f9a63ac3f6f"), "color" : "white", "example" : "milk" }
+{ "_id" : ObjectId("638bcbadb4019f9a63ac3f70"), "color" : "blue", "example" : "sky" }
+{ "_id" : ObjectId("638bcc73b4019f9a63ac3f71"), "color" : "green", "example" : "butter" }
+> exit
+bye
+
+C:\Users\User>
